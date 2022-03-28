@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <meta name="author" content="Erick Nogueira Zorn, Guilherme Fabricio de Souza, Julio Duvique Andriollo"/>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>Vapor</title>
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+        
+        <link rel="stylesheet" type="text/css" id="cssSwitch" href="jogosStyle.css"/>
+        <script src="jogosRest.js"></script>
+        <script src="jogosSpa.js"></script>
+    </head>
+    <body>
+        <header id="navbar">
+            <div id="title">            
+                <img src="../media/logo.png" alt="JEG logo">
+                <a href="../index.html"><h1>Home</h1></a>
+            </div>
+            
+            <nav id="buttons">
+                <button type='button' onclick='catalogButton()' id='catalogButton'> <img src="../media/game.png" alt="game icon"></button>  
+                
+                <button type='button' onclick='createButton()' id='createButton'> <img src="../media/plus.png" alt="plus icon"></button>
+                
+                <label id="switch" >
+                    <input type="checkbox" id="darkmodeSwitch" onchange='darkMode()'>
+                    <span id="slider">
+                        <img src="../media/sun.png" alt="sun icon">
+                        <img src="../media/moon.png" alt="moon icon">
+                    </span>
+                </label>
+                
+            </nav>
+        </header>
+        
+        <section class="content" id="createSection">            
+            <header>                    
+                <h2>Publicação</h2>                
+                <p>
+                    Utilize o formulário para publicar um novo jogo no catálogo!
+                </p>
+            </header>
+           
+            <section>
+                <form id="createForm" onSubmit='enviarJogo()'>
+                    <div>
+                        <p>
+                            <input id='formTitulo' type='text' placeholder='Nome do Jogo'  spellcheck='false' maxlength="40" required>
+                        </p>
+                        <p>
+                            <input id='formLink' type='text' placeholder='Link do Trailer do Youtube' spellcheck='false' required>
+                        </p>
+                        <p>                        
+                            <input id='formPreco' type="number" placeholder='Preço' min="0" max="1000" step="any" required/>
+                        </p>                    
+                    </div>                    
+                    <div>
+                        <p>                        
+                            <textarea id='formDescricao' maxlength="250" name="description" rows="7" cols="33" required>Descrição do Jogo</textarea>
+                        </p>                    
+                        <p>
+                            <button>Publicar</button>
+                        </p>
+                    </div>
+                    
+                </form>
+            </section>
+            
+        </section>
+        
+        <section class="content" id="readSection">
+            <header>                    
+                <h2>Catálogo</h2>                
+                <p>
+                    Gerencie seus jogos publicados!
+                </p>
+                <p>
+                    Clique no nome do jogo para uma visualização completa
+                </p>
+            </header>
+            <section id="catalog">
+                <!--jogos publicados no catalogo-->
+            </section>
+            
+            
+            <!--popup jogo único-->
+            <section class='popUpBackground' id='popUpRead'>
+                <div class='popUp'>  
+                    <header>
+                        <h3 id='titleRead'></h3>
+                        <button onclick='closePopUp()' id='closePopUp'><img src="../media/plus.png" alt="exit icon"></button>
+                    </header>
+                    <section>
+                        <section>
+                            <!--
+                            video id = ultimos 11 digitos do watch ou do embed comum
+                            para a implementação em loop, colar logo após do embed e após a tag "playlist"
+                            -->
+                            <iframe id='video' frameborder="0"
+                                src="">
+                            </iframe>
+                            <div>
+                                <img src="../media/price.png" alt="price icon">
+                                <b id='priceRead'></b>
+                            </div>
+                        </section>
+                        <textarea id='descriptionRead' name="description" rows="7" cols="33" readonly>    
+                        </textarea>
+                    </section>
+                </div>
+            </section>
+            
+            
+            <!--popup editar jogo único-->
+            <section class='popUpBackground' id='popUpUpdate'>
+                <div class='popUp'>  
+                    <header>
+                        <h3>Edição de Jogo Publicado</h3>
+                        <button onclick='closeForm()' id='closePopUp'><img src="../media/plus.png" alt="exit icon"></button>
+                    </header>
+                    <section>
+                        <form id="updateForm" onSubmit='editarJogo()'>
+                            <div>
+                                <span id='gameId' style='display: none;'></span>
+                                <p>
+                                    <input type='text' id='updateTitle' placeholder='Nome do Jogo' value=''  spellcheck='false' maxlength="40" required>
+                                </p>
+                                <p>
+                                    <input type='text' id='updateVideo' placeholder='Link do Trailer do Youtube' value='' spellcheck='false' required>
+                                </p>
+                                <p>                        
+                                    <input type="number" id='updatePreco' placeholder='Preço' value='' min="0" max="1000" step="any" required/>
+                                </p>                    
+                            </div>                    
+                            <div>
+                                <p>                        
+                                    <textarea id='updateDescricao'  maxlength="250" name="description" rows="7" cols="33" required>
+				    </textarea>
+                                </p>                    
+                                <p>
+                                    <button id='updateButton'>Editar</button>
+                                </p>
+                            </div>
+                        
+                        </form>
+                    </section>
+                </div>
+            </section>
+            
+        </section>
+    </body>

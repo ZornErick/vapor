@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <meta name="author" content="Erick Nogueira Zorn, Guilherme Fabricio de Souza, Julio Duvique Andriollo"/>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>Vapor</title>
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+        
+        <link rel="stylesheet" type="text/css" id="cssSwitch" href="publicadoresStyle.css"/>
+        
+        <script src="publicadoresRest.js"></script>
+        <script src="publicadoresSpa.js"></script>
+    </head>
+    <body>
+        <header id="navbar">
+            <div id="title">
+                
+                
+
+                <img src="../media/logo.png" alt="JEG logo">
+                <a href="../index.html"><h1>Home</h1></a>
+                
+            </div>
+            
+            <nav id="buttons">
+                <button type='button' onclick='catalogButton()' id='catalogButton'> <img src="../media/publisher.png" alt="game icon"></button>  
+                
+                <button type='button' onclick='createButton()' id='createButton'> <img src="../media/plus.png" alt="plus icon"></button>
+                
+                <label id="switch" >
+                    <input type="checkbox" id="darkmodeSwitch" onchange='darkMode()'>
+                    <span id="slider">
+                        <img src="../media/sun.png" alt="sun icon">
+                        <img src="../media/moon.png" alt="moon icon">
+                    </span>
+                </label>
+                
+            </nav>
+        </header>
+        
+        <section class="content" id="createSection">            
+            <header>                    
+                <h2>Cadastro</h2>                
+                <p>
+                    Utilize o formulário para incluir um novo publicador na plataforma!
+                </p>
+            </header>
+           
+            <section>
+                <form id="createForm">
+                    <div>
+                        <p>
+                            <input id='formTitulo' type='text' placeholder='Nome do Publicador' spellcheck='false' maxlength="40" required>
+                        </p>
+                        <p>
+                            <input id='formCnpj' type='text' placeholder='CNPJ' spellcheck='false' required onkeyup="validaCnpj(this.value)" minlength="18" maxlength="18" />
+                        </p>
+                        <p>                        
+                            <input id='formEmail' type="email" placeholder='E-mail' spellcheck='false' required/>
+                        </p>
+                        <button onclick='enviarPublicador()'>Cadastrar</button>
+                    </div>
+                </form>
+            </section>
+            
+        </section>
+        
+        <section class="content" id="readSection">
+            <header>                    
+                <h2>Publicadores</h2>                
+                <p>
+                    Gerencie os publicadores da plataforma!
+                </p>
+            </header>
+            <section id="catalog">
+                <!--publicadores cadastrados-->
+            </section>
+            <section class='popUpBackground' id='popUpUpdate'>
+                <div class='popUp'>  
+                    <header>
+                        <h3>Edição de Publicador</h3>
+                        <button onclick='closeForm()' id='closePopUp'><img src="../media/plus.png" alt="exit icon"></button>
+                    </header>
+                    <section>
+                        <form id="updateForm">                           
+                            <div>
+                                <span id='publisherId' style='display: none;'></span>
+                                <p>
+                                    <input id='updateTitle' type='text' placeholder='Nome do Publicador' value='' spellcheck='false' maxlength="40" required>
+                                </p>
+                                <p>
+                                    <input id='updateCnpj' type='text' placeholder='CNPJ' value='' spellcheck='false' required onkeyup="validaUpdtCnpj(this.value)" minlength="18" maxlength="18" />
+                                </p>
+                                <p>                        
+                                    <input id='updateEmail' type="email" placeholder='E-mail' value='' spellcheck='false' required/>
+                                </p>
+                                <button         onclick='editarPublicador()'>Editar</button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+            </section>
+            
+        </section>
+    </body>

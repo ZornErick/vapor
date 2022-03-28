@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <meta name="author" content="Erick Nogueira Zorn, Guilherme Fabricio de Souza, Julio Duvique Andriollo"/>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>Vapor</title>
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" id="cssSwitch" href="style.css"/>
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <header id="navbar">
+            <div id="title">
+                <img src="media/logo.png" alt="JEG logo">
+                <h1>Vapor</h1>
+            </div>
+            
+            <nav id="buttons">
+                <label id="switch" >
+                    <input type="checkbox" id="darkmodeSwitch" onchange='darkMode()'>
+                    <span id="slider">
+                        <img src="media/sun.png" alt="sun icon">
+                        <img src="media/moon.png" alt="moon icon">
+                    </span>
+                </label>
+            </nav>
+        </header>
+        
+        <section class="content" id="content">
+            <header>                    
+                <h2>Bem Vindo ao Sistema Vapor</h2>
+                <p>
+                    Gerencie os publicadores e jogos da plataforma!
+                </p>
+            </header>
+            <section>
+                <a href="publicadores/publicadores.html">
+                    <img src="media/publisher.png" alt="moon icon">
+                    <h3>Publicadores</h3>
+                </a>
+                <div href="jogos/jogos.html" onclick="selectPublisher()">
+                    <img src="media/game.png" alt="moon icon">
+                    <h3>Jogos</h3>
+                </div>
+            </section>
+        </section>
+    </body>
